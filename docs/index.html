@@ -68,28 +68,60 @@
     <section id="controls-bar">
       <div class="controls-content">
         <div class="filter-group">
-          <label for="phase-filter">Phase</label>
-          <select id="phase-filter">
-            <option value="all">All Phases</option>
-          </select>
+          <label>Phase</label>
+          <div class="multi-select" id="phase-filter">
+            <button class="multi-select-trigger" type="button">
+              <span class="multi-select-label">All Phases</span>
+              <svg class="multi-select-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="multi-select-dropdown"></div>
+          </div>
         </div>
         <div class="filter-group">
-          <label for="status-filter">Status</label>
-          <select id="status-filter">
-            <option value="all">All Statuses</option>
-            <option value="Done">Done</option>
-            <option value="In progress">In Progress</option>
-            <option value="Delayed">Delayed</option>
-            <option value="Not started">Not Started</option>
-          </select>
+          <label>Status</label>
+          <div class="multi-select" id="status-filter">
+            <button class="multi-select-trigger" type="button">
+              <span class="multi-select-label">All Statuses</span>
+              <svg class="multi-select-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="multi-select-dropdown">
+              <label class="multi-select-option select-all-option">
+                <input type="checkbox" value="__all__" checked /><span class="checkbox-custom"></span>All
+              </label>
+              <label class="multi-select-option">
+                <input type="checkbox" value="Done" checked /><span class="checkbox-custom"></span>Done
+              </label>
+              <label class="multi-select-option">
+                <input type="checkbox" value="In progress" checked /><span class="checkbox-custom"></span>In Progress
+              </label>
+              <label class="multi-select-option">
+                <input type="checkbox" value="Delayed" checked /><span class="checkbox-custom"></span>Delayed
+              </label>
+              <label class="multi-select-option">
+                <input type="checkbox" value="Not started" checked /><span class="checkbox-custom"></span>Not Started
+              </label>
+            </div>
+          </div>
         </div>
         <div class="filter-group">
-          <label for="type-filter">Type</label>
-          <select id="type-filter">
-            <option value="all">All Types</option>
-            <option value="Task">Task</option>
-            <option value="Milestone">Milestone</option>
-          </select>
+          <label>Type</label>
+          <div class="multi-select" id="type-filter">
+            <button class="multi-select-trigger" type="button">
+              <span class="multi-select-label">All Types</span>
+              <svg class="multi-select-arrow" width="10" height="6" viewBox="0 0 10 6" fill="none"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </button>
+            <div class="multi-select-dropdown">
+              <label class="multi-select-option select-all-option">
+                <input type="checkbox" value="__all__" checked /><span class="checkbox-custom"></span>All
+              </label>
+              <label class="multi-select-option">
+                <input type="checkbox" value="Task" checked /><span class="checkbox-custom"></span>Task
+              </label>
+              <label class="multi-select-option">
+                <input type="checkbox" value="Milestone" checked /><span class="checkbox-custom"></span>Milestone
+              </label>
+            </div>
+          </div>
         </div>
         <div class="legend">
           <span class="legend-item"><span class="legend-dot done"></span>Done</span>

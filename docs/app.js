@@ -174,20 +174,47 @@
     });
     renderStats();
     renderKeyDates();
-    renderPhaseFilter();
     renderTimelineHeader(monthCols, currentMonthIdx);
     renderTasksAndBars(filteredTasks, monthCols, currentMonthIdx);
     renderTodayLine(monthCols);
   }
 
+  function getSelectedValues(multiSelectEl) {
+    var checkboxes = multiSelectEl.querySelectorAll('input[type="checkbox"]');
+    var values = [];
+    checkboxes.forEach(function(cb) {
+      if (cb.checked && cb.value !== '__all__') values.push(cb.value);
+    });
+    return values;
+  }
+
+  function updateMultiSelectLabel(multiSelectEl, allLabel) {
+    var checkboxes = multiSelectEl.querySelectorAll('input[type="checkbox"]');
+    var totalOptions = 0;
+    checkboxes.forEach(function(cb) { if (cb.value !== '__all__') totalOptions++; });
+    
+    var selected = getSelectedValues(multiSelectEl);
+    var labelEl = multiSelectEl.querySelector('.multi-select-label');
+    
+    if (selected.length === 0) {
+      labelEl.textContent = allLabel;
+    } else if (selected.length === totalOptions) {
+      labelEl.textContent = allLabel;
+    } else if (selected.length <= 2) {
+      labelEl.textContent = selected.join(', ');
+    } else {
+      labelEl.textContent = selected.length + ' selected';
+    }
+  }
+
   function getFilteredTasks() {
-    var phaseVal = dom.phaseFilter.value;
-    var statusVal = dom.statusFilter.value;
-    var typeVal = dom.typeFilter.value;
+    var phaseVals = getSelectedValues(dom.phaseFilter);
+    var statusVals = getSelectedValues(dom.statusFilter);
+    var typeVals = getSelectedValues(dom.typeFilter);
     return allTasks.filter(function(t) {
-      if (phaseVal !== 'all' && t.phase !== phaseVal) return false;
-      if (statusVal !== 'all' && t.status !== statusVal) return false;
-      if (typeVal !== 'all' && t.type !== typeVal) return false;
+      if (phaseVals.length > 0 && phaseVals.indexOf(t.phase) === -1) return false;
+      if (statusVals.length > 0 && statusVals.indexOf(t.status) === -1) return false;
+      if (typeVals.length > 0 && typeVals.indexOf(t.type) === -1) return false;
       return true;
     });
   }
@@ -219,11 +246,29 @@
     allTasks.forEach(function(t) {
       if (!seen[t.phase]) { seen[t.phase] = true; phases.push(t.phase); }
     });
-    var current = dom.phaseFilter.value;
-    dom.phaseFilter.innerHTML = '<option value="all">All Phases</option>' +
-      phases.map(function(p) {
-        return '<option value="' + p + '"' + (p === current ? ' selected' : '') + '>' + p + '</option>';
-      }).join('');
+    
+    var dropdown = dom.phaseFilter.querySelector('.multi-select-dropdown');
+    var isInitialLoad = dropdown.children.length === 0;
+    var currentSelected = getSelectedValues(dom.phaseFilter);
+    
+    var allChecked = isInitialLoad || currentSelected.length === phases.length;
+    var html = '<label class="multi-select-option select-all-option">' +
+      '<input type="checkbox" value="__all__"' + (allChecked ? ' checked' : '') + ' />' +
+      '<span class="checkbox-custom"></span>All' +
+      '</label>';
+
+    html += phases.map(function(p) {
+      var isChecked = isInitialLoad || currentSelected.indexOf(p) !== -1;
+      return '<label class="multi-select-option">' +
+        '<input type="checkbox" value="' + p + '"' + (isChecked ? ' checked' : '') + ' />' +
+        '<span class="checkbox-custom"></span>' + p +
+        '</label>';
+    }).join('');
+    
+    dropdown.innerHTML = html;
+    // Re-attach checkbox listeners only (trigger is set up once in setupEvents)
+    setupMultiSelectCheckboxes(dom.phaseFilter, 'All Phases');
+    updateMultiSelectLabel(dom.phaseFilter, 'All Phases');
   }
 
   function renderTimelineHeader(monthCols, currentMonthIdx) {
@@ -385,10 +430,83 @@
 
   // ---- Event listeners ----
 
+  function setupMultiSelectTrigger(multiSelectEl) {
+    var trigger = multiSelectEl.querySelector('.multi-select-trigger');
+    trigger.addEventListener('click', function(e) {
+      e.stopPropagation();
+      // Close other open multi-selects
+      document.querySelectorAll('.multi-select.open').forEach(function(ms) {
+        if (ms !== multiSelectEl) ms.classList.remove('open');
+      });
+      multiSelectEl.classList.toggle('open');
+    });
+
+    // Prevent dropdown clicks from closing
+    var dropdown = multiSelectEl.querySelector('.multi-select-dropdown');
+    dropdown.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+  }
+
+  function setupMultiSelectCheckboxes(multiSelectEl, allLabel) {
+    var checkboxes = multiSelectEl.querySelectorAll('input[type="checkbox"]');
+    var allCheckbox = multiSelectEl.querySelector('input[value="__all__"]');
+
+    checkboxes.forEach(function(cb) {
+      cb.addEventListener('change', function(e) {
+        if (cb === allCheckbox) {
+          // If "All" is toggled, set all others to match its state
+          var isChecked = cb.checked;
+          checkboxes.forEach(function(otherCb) {
+            if (otherCb !== cb) otherCb.checked = isChecked;
+          });
+        } else if (allCheckbox) {
+          // If a normal option is toggled, update "All" state
+          var allOthersChecked = true;
+          var anyChecked = false;
+          checkboxes.forEach(function(otherCb) {
+            if (otherCb !== allCheckbox) {
+              if (!otherCb.checked) allOthersChecked = false;
+              if (otherCb.checked) anyChecked = true;
+            }
+          });
+          
+          if (!anyChecked) {
+            // If everything is unchecked, optionally check "All" and all options if that's desired behavior
+            // Based on request: "ubah phases ketika uncentang semua, value di phases jadi all phases, tetapi semua centang tidak perlu terpilih kembali semua sama seperti status dan type sekarang"
+            // Wait, the request says: "ubah phases ketika uncentang semua, value di phases jadi all phases, tetapi semua centang tidak perlu terpilih kembali semua sama seperti status dan type sekarang."
+            // This means when 0 items are checked, it acts as "All", but visually they stay unchecked. 
+            // So we don't automatically check them. We just let it be 0 checked.
+            allCheckbox.checked = false;
+          } else {
+             allCheckbox.checked = allOthersChecked;
+          }
+        }
+        
+        updateMultiSelectLabel(multiSelectEl, allLabel);
+        render();
+      });
+    });
+  }
+
+  function setupMultiSelect(multiSelectEl, allLabel) {
+    setupMultiSelectTrigger(multiSelectEl);
+    setupMultiSelectCheckboxes(multiSelectEl, allLabel);
+  }
+
   function setupEvents() {
-    dom.phaseFilter.addEventListener('change', render);
-    dom.statusFilter.addEventListener('change', render);
-    dom.typeFilter.addEventListener('change', render);
+    // Phase trigger set up once here; checkboxes re-attached in renderPhaseFilter()
+    setupMultiSelectTrigger(dom.phaseFilter);
+    setupMultiSelect(dom.statusFilter, 'All Statuses');
+    setupMultiSelect(dom.typeFilter, 'All Types');
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', function() {
+      document.querySelectorAll('.multi-select.open').forEach(function(ms) {
+        ms.classList.remove('open');
+      });
+    });
+
     dom.refreshBtn.addEventListener('click', function() {
       dom.refreshBtn.classList.add('spinning');
       init().finally(function() { dom.refreshBtn.classList.remove('spinning'); });
@@ -434,6 +552,7 @@
       await loadData();
       dom.loadingOverlay.classList.add('hidden');
       dom.app.classList.remove('hidden');
+      renderPhaseFilter();
       render();
       var now = new Date();
       dom.lastRefresh.textContent = fmtDate(now) + ' ' + now.toLocaleTimeString();
