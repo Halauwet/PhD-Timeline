@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PhD Timeline — Yehezkiel's Gantt Chart</title>
+  <title>PhD Timeline - Yehezkiel's Gantt Chart</title>
   <meta name="description"
-    content="Interactive Gantt chart for Yehezkiel's PhD journey at ANU RSES — 3-year plan with live status tracking." />
+    content="Interactive Gantt chart for Yehezkiel's PhD journey at ANU RSES - 3-year plan with live status tracking." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
@@ -19,15 +19,15 @@
   <div id="loading-overlay">
     <div class="loader-container">
       <div class="loader-ring"></div>
-      <p class="loader-text">Loading PhD Timeline…</p>
-      <p class="loader-subtext">Fetching data from OneDrive</p>
+      <p class="loader-text">Loading PhD Timeline...</p>
+      <p class="loader-subtext">Preparing Gantt chart</p>
     </div>
   </div>
 
   <!-- Error overlay -->
   <div id="error-overlay" class="hidden">
     <div class="error-container">
-      <div class="error-icon">⚠️</div>
+      <div class="error-icon">&#x26A0;&#xFE0F;</div>
       <h2>Could not load timeline</h2>
       <p id="error-message"></p>
       <button id="retry-btn" class="btn-primary">Retry</button>
@@ -41,14 +41,14 @@
       <div class="header-content">
         <div class="header-left">
           <h1>
-            <span class="header-icon">🎓</span>
+            <span class="header-icon">&#x1F393;</span>
             <span>PhD Timeline</span>
           </h1>
-          <p class="header-subtitle">Yehezkiel — ANU RSES · 3-Year Plan</p>
+          <p class="header-subtitle">Yehezkiel - ANU RSES - 3-Year Plan</p>
         </div>
         <div class="header-right">
           <div class="header-stats" id="header-stats"></div>
-          <button id="refresh-btn" class="btn-icon" title="Refresh from OneDrive">
+          <button id="refresh-btn" class="btn-icon" title="Refresh data">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
               stroke-linecap="round" stroke-linejoin="round">
               <polyline points="23 4 23 10 17 10" />
@@ -92,9 +92,9 @@
         </div>
         <div class="legend">
           <span class="legend-item"><span class="legend-dot done"></span>Done</span>
-          <span class="legend-item"><span class="legend-dot urgent-progress"></span>Due &lt;1m · In Progress</span>
-          <span class="legend-item"><span class="legend-dot urgent-delayed"></span>Due &lt;1m · Delayed</span>
-          <span class="legend-item"><span class="legend-dot urgent-not-started"></span>Due &lt;1m · Not Started</span>
+          <span class="legend-item"><span class="legend-dot urgent-progress"></span>Due &lt;1m - In Progress</span>
+          <span class="legend-item"><span class="legend-dot urgent-delayed"></span>Due &lt;1m - Delayed</span>
+          <span class="legend-item"><span class="legend-dot urgent-not-started"></span>Due &lt;1m - Not Started</span>
           <span class="legend-item"><span class="legend-dot default"></span>Normal</span>
         </div>
       </div>
@@ -127,17 +127,14 @@
 
     <!-- Footer -->
     <footer id="footer">
-      <p>Last refreshed: <span id="last-refresh">—</span> · Data from <a
-          href="https://anu365-my.sharepoint.com/:x:/r/personal/u8363323_anu_edu_au/Documents/Doctoral%20Documents/QTimeline/PhD_Timeline_ANU.xlsx?d=wca152be551d24e248e6073fba2c31b4f&csf=1&web=1&e=zkkZLR"
-          target="_blank" rel="noopener">OneDrive</a></p>
+      <p>Last refreshed: <span id="last-refresh">-</span> - Data synced via GitHub Actions</p>
     </footer>
   </div>
 
   <!-- Tooltip -->
   <div id="tooltip" class="hidden"></div>
 
-  <!-- SheetJS CDN -->
-  <script src="https://cdn.sheetjs.com/xlsx-0.20.3/package/dist/xlsx.full.min.js"></script>
+  <!-- No SheetJS needed - we load from data.json directly -->
   <script src="app.js"></script>
 </body>
 
