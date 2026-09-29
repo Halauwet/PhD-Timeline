@@ -1,0 +1,42 @@
+# GitHub Actions: Convert Excel → JSON and deploy to GitHub Pages
+# Triggers on push when the Excel file changes.
+
+name: Update Gantt Chart
+
+on:
+  push:
+    paths:
+      - 'PhD_Timeline_ANU_3yr.xlsx'
+    branches: [main]
+  workflow_dispatch:  # Allow manual trigger
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  convert-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install openpyxl python-dateutil
+
+      - name: Convert Excel to JSON
+        run: python convert_timeline.py
+
+      - name: Commit updated data.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/data.json
+          git diff --cached --quiet || git commit -m "chore: update Gantt data from Excel [skip ci]"
+          git push
