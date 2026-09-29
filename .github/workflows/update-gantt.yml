@@ -6,7 +6,7 @@ name: Update Gantt Chart
 on:
   push:
     paths:
-      - 'PhD_Timeline_ANU_3yr.xlsx'
+      - 'PhD_Timeline_ANU.xlsx'
     branches: [main]
   workflow_dispatch:  # Allow manual trigger
 

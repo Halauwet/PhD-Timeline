@@ -11,7 +11,7 @@
 
   // ---- Configuration ----
   const ONEDRIVE_SHARE_URL =
-    'https://anu365-my.sharepoint.com/:x:/r/personal/u8363323_anu_edu_au/Documents/Doctoral%20Documents/QTimeline/PhD_Timeline_ANU_3yr.xlsx?d=wca152be551d24e248e6073fba2c31b4f&csf=1&web=1&e=TR8lMw;
+    'https://anu365-my.sharepoint.com/:x:/r/personal/u8363323_anu_edu_au/Documents/Doctoral%20Documents/QTimeline/PhD_Timeline_ANU.xlsx?d=wca152be551d24e248e6073fba2c31b4f&csf=1&web=1&e=TR8lMw;
 
   // OneDrive download URL (derived from share link)
   const ONEDRIVE_DOWNLOAD_URL =

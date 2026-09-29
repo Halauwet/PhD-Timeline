@@ -1,7 +1,7 @@
 """
 convert_timeline.py
 -------------------
-Reads PhD_Timeline_ANU_3yr.xlsx and writes docs/data.json.
+Reads PhD_Timeline_ANU.xlsx and writes docs/data.json.
 
 Run this script every time you update the Excel file, then commit
 & push to GitHub. GitHub Pages will serve the updated Gantt chart.
@@ -29,7 +29,7 @@ def add_months(dt, n):
 
 def main():
     script_dir = os.path.dirname(os.path.abspath(__file__))
-    xlsx_path = os.path.join(script_dir, "PhD_Timeline_ANU_3yr.xlsx")
+    xlsx_path = os.path.join(script_dir, "PhD_Timeline_ANU.xlsx")
     out_path = os.path.join(script_dir, "docs", "data.json")
 
     if not os.path.exists(xlsx_path):
