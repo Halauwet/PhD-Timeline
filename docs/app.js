@@ -26,6 +26,7 @@
     phaseFilter: $('#phase-filter'),
     statusFilter: $('#status-filter'),
     typeFilter: $('#type-filter'),
+    ownerFilter: $('#owner-filter'),
     taskPanelBody: $('#task-panel-body'),
     timelineHeader: $('#timeline-header'),
     timelineBody: $('#timeline-body'),
@@ -81,6 +82,7 @@
   function getHighlightClass(task) {
     var status = (task.status || '').toLowerCase().trim();
     if (status === 'done') return 'highlight-done';
+    if (status === 'not started' && task.startDate && new Date() >= task.startDate) return 'highlight-overdue-not-started';
     var urgent = isDueLessThanOneMonth(task.endDate);
     if (!urgent) return '';
     if (status === 'in progress') return 'highlight-urgent-progress';
@@ -93,6 +95,7 @@
     var status = (task.status || '').toLowerCase().trim();
     if (status === 'done') return 'bar-done';
     var urgent = isDueLessThanOneMonth(task.endDate);
+    if (status === 'not started' && task.startDate && new Date() >= task.startDate) return 'bar-overdue-not-started';
     if (urgent && status === 'in progress') return 'bar-urgent-progress';
     if (urgent && status === 'not started') return 'bar-urgent-not-started';
     if (urgent && status === 'delayed') return 'bar-urgent-delayed';
@@ -120,6 +123,12 @@
   function phaseIndex(phaseName) {
     var idx = phases.indexOf(phaseName);
     return idx >= 0 ? idx % 5 : 0;
+  }
+
+  function isSharedOwner(owner) {
+    if (!owner) return false;
+    var lower = owner.toLowerCase().trim();
+    return lower !== 'me' && lower !== 'saya';
   }
 
   // ---- Data loading (data.json only - fast, no OneDrive) ----
@@ -211,10 +220,12 @@
     var phaseVals = getSelectedValues(dom.phaseFilter);
     var statusVals = getSelectedValues(dom.statusFilter);
     var typeVals = getSelectedValues(dom.typeFilter);
+    var ownerVals = getSelectedValues(dom.ownerFilter);
     return allTasks.filter(function(t) {
       if (phaseVals.length > 0 && phaseVals.indexOf(t.phase) === -1) return false;
       if (statusVals.length > 0 && statusVals.indexOf(t.status) === -1) return false;
       if (typeVals.length > 0 && typeVals.indexOf(t.type) === -1) return false;
+      if (ownerVals.length > 0 && ownerVals.indexOf(t.owner) === -1) return false;
       return true;
     });
   }
@@ -269,6 +280,36 @@
     // Re-attach checkbox listeners only (trigger is set up once in setupEvents)
     setupMultiSelectCheckboxes(dom.phaseFilter, 'All Phases');
     updateMultiSelectLabel(dom.phaseFilter, 'All Phases');
+  }
+
+  function renderOwnerFilter() {
+    var owners = [];
+    var seen = {};
+    allTasks.forEach(function(t) {
+      if (t.owner && !seen[t.owner]) { seen[t.owner] = true; owners.push(t.owner); }
+    });
+    
+    var dropdown = dom.ownerFilter.querySelector('.multi-select-dropdown');
+    var isInitialLoad = dropdown.children.length === 0;
+    var currentSelected = getSelectedValues(dom.ownerFilter);
+    
+    var allChecked = isInitialLoad || currentSelected.length === owners.length;
+    var html = '<label class="multi-select-option select-all-option">' +
+      '<input type="checkbox" value="__all__"' + (allChecked ? ' checked' : '') + ' />' +
+      '<span class="checkbox-custom"></span>All' +
+      '</label>';
+
+    html += owners.map(function(o) {
+      var isChecked = isInitialLoad || currentSelected.indexOf(o) !== -1;
+      return '<label class="multi-select-option">' +
+        '<input type="checkbox" value="' + o + '"' + (isChecked ? ' checked' : '') + ' />' +
+        '<span class="checkbox-custom"></span>' + o +
+        '</label>';
+    }).join('');
+    
+    dropdown.innerHTML = html;
+    setupMultiSelectCheckboxes(dom.ownerFilter, 'All Owners');
+    updateMultiSelectLabel(dom.ownerFilter, 'All Owners');
   }
 
   function renderTimelineHeader(monthCols, currentMonthIdx) {
@@ -333,6 +374,7 @@
       }
 
       var barClass = getBarClass(task);
+      var sharedClass = isSharedOwner(task.owner) ? ' bar-shared-owner' : '';
       var startCol = task.startM - 1;
       var endCol = task.endM;
       var barLeft = startCol * monthW;
@@ -340,7 +382,7 @@
 
       if (task.type === 'Milestone') {
         var bar = document.createElement('div');
-        bar.className = 'gantt-bar bar-milestone ' + barClass;
+        bar.className = 'gantt-bar bar-milestone ' + barClass + sharedClass;
         bar.style.left = (barLeft + monthW / 2 - 11) + 'px';
         bar.style.cssText += animDelay;
         bar.innerHTML = '<div class="bar-fill"></div>';
@@ -350,7 +392,7 @@
         tlRowEl.appendChild(bar);
       } else {
         var bar2 = document.createElement('div');
-        bar2.className = 'gantt-bar ' + barClass;
+        bar2.className = 'gantt-bar ' + barClass + sharedClass;
         bar2.style.left = barLeft + 'px';
         bar2.style.width = Math.max(barWidth, monthW) + 'px';
         bar2.style.cssText += animDelay;
@@ -497,6 +539,7 @@
   function setupEvents() {
     // Phase trigger set up once here; checkboxes re-attached in renderPhaseFilter()
     setupMultiSelectTrigger(dom.phaseFilter);
+    setupMultiSelectTrigger(dom.ownerFilter);
     setupMultiSelect(dom.statusFilter, 'All Statuses');
     setupMultiSelect(dom.typeFilter, 'All Types');
 
@@ -553,6 +596,7 @@
       dom.loadingOverlay.classList.add('hidden');
       dom.app.classList.remove('hidden');
       renderPhaseFilter();
+      renderOwnerFilter();
       render();
       var now = new Date();
       dom.lastRefresh.textContent = fmtDate(now) + ' ' + now.toLocaleTimeString();

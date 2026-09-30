@@ -737,6 +737,15 @@ body {
   background: rgba(251, 146, 60, 0.18);
 }
 
+.task-row.highlight-overdue-not-started {
+  background: rgba(139, 149, 170, 0.08);
+  border-left: 3px solid var(--clr-text-muted);
+}
+
+.task-row.highlight-overdue-not-started:hover {
+  background: rgba(139, 149, 170, 0.15);
+}
+
 /* ---------- Timeline Panel (Right) ---------- */
 #timeline-panel {
   flex: 1;
@@ -886,6 +895,22 @@ body {
 }
 .gantt-bar.bar-default .bar-fill {
   background: linear-gradient(135deg, var(--clr-default-bar), #4f6bcd);
+}
+
+.gantt-bar.bar-overdue-not-started {
+  background: rgba(139, 149, 170, 0.12);
+  border: 1px solid rgba(139, 149, 170, 0.3);
+}
+.gantt-bar.bar-overdue-not-started .bar-fill {
+  background: linear-gradient(135deg, var(--clr-text-muted), #5a6478);
+}
+
+/* Shared owner outline */
+.gantt-bar.bar-shared-owner {
+  border: 3px solid rgba(255, 255, 255, 0.85) !important;
+}
+.gantt-bar.bar-milestone.bar-shared-owner {
+  border: 3px solid #d8b4fe !important;
 }
 
 /* Milestone diamond */
