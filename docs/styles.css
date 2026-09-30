@@ -1091,7 +1091,7 @@ body {
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   :root {
-    --task-panel-w: 320px;
+    --task-panel-w: 250px;
     --task-panel-inner-w: 550px;
     --month-w: 44px;
   }
@@ -1114,7 +1114,7 @@ body {
 
 @media (max-width: 600px) {
   :root {
-    --task-panel-w: 240px;
+    --task-panel-w: 190px;
     --task-panel-inner-w: 500px;
     --month-w: 36px;
     --row-h: 34px;
