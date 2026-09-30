@@ -157,11 +157,30 @@
 
   // ---- Rendering ----
 
+  function getDateXPos(date, monthCols, monthW) {
+    if (!date) return 0;
+    for (var i = 0; i < monthCols.length; i++) {
+      var colDate = monthCols[i].date;
+      var nextDate = i + 1 < monthCols.length ? monthCols[i + 1].date : addMonths(colDate, 1);
+      if (date >= colDate && date < nextDate) {
+        var totalMs = nextDate - colDate;
+        var elapsedMs = date - colDate;
+        var frac = totalMs > 0 ? elapsedMs / totalMs : 0;
+        return (i + frac) * monthW;
+      }
+    }
+    if (date >= monthCols[monthCols.length - 1].date) {
+      return monthCols.length * monthW;
+    }
+    return 0;
+  }
+
   function computeMonthColumns() {
     if (!enrolmentDate) return [];
     var cols = [];
-    for (var m = 0; m < 44; m++) {
-      var d = addMonths(enrolmentDate, m);
+    var startMonth = new Date(enrolmentDate.getFullYear(), enrolmentDate.getMonth(), 1);
+    for (var m = 0; m < 46; m++) {
+      var d = new Date(startMonth.getFullYear(), startMonth.getMonth() + m, 1);
       cols.push({
         month: d.getMonth(),
         year: d.getFullYear(),
@@ -313,6 +332,9 @@
   }
 
   function renderTimelineHeader(monthCols, currentMonthIdx) {
+    var monthW = getMonthWidth();
+    var totalW = monthCols.length * monthW;
+    dom.timelineHeader.style.minWidth = totalW + 'px';
     dom.timelineHeader.innerHTML = monthCols.map(function(c, i) {
       return '<div class="month-header ' + (i === currentMonthIdx ? 'current-month' : '') + '">' +
         '<span class="month-label">' + c.label + '</span>' +
@@ -321,11 +343,16 @@
     }).join('');
   }
 
+  function getMonthWidth() {
+    return parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--month-w')) || 60;
+  }
+
   function renderTasksAndBars(tasks, monthCols, currentMonthIdx) {
     dom.taskPanelBody.innerHTML = '';
     dom.timelineBody.innerHTML = '';
     var totalMonths = monthCols.length;
-    var monthW = 60;
+    var monthW = getMonthWidth();
+    var totalTimelineW = totalMonths * monthW;
     var lastPhase = '';
 
     tasks.forEach(function(task, idx) {
@@ -342,7 +369,7 @@
 
         var tlPhEl = document.createElement('div');
         tlPhEl.className = 'timeline-phase-row';
-        tlPhEl.style.cssText = animDelay;
+        tlPhEl.style.cssText = 'min-width:' + totalTimelineW + 'px;' + animDelay;
         for (var i = 0; i < totalMonths; i++) {
           var cell = document.createElement('div');
           cell.className = 'timeline-cell' + (i === currentMonthIdx ? ' current-month-col' : '');
@@ -366,7 +393,7 @@
 
       var tlRowEl = document.createElement('div');
       tlRowEl.className = 'timeline-row';
-      tlRowEl.style.cssText = animDelay;
+      tlRowEl.style.cssText = 'min-width:' + totalTimelineW + 'px;' + animDelay;
       for (var j = 0; j < totalMonths; j++) {
         var tcell = document.createElement('div');
         tcell.className = 'timeline-cell' + (j === currentMonthIdx ? ' current-month-col' : '');
@@ -375,15 +402,24 @@
 
       var barClass = getBarClass(task);
       var sharedClass = isSharedOwner(task.owner) ? ' bar-shared-owner' : '';
-      var startCol = task.startM - 1;
-      var endCol = task.endM;
-      var barLeft = startCol * monthW;
-      var barWidth = (endCol - startCol) * monthW;
+      
+      var barLeft = 0;
+      var barWidth = monthW;
+      if (task.startDate && task.endDate) {
+        barLeft = getDateXPos(task.startDate, monthCols, monthW);
+        var barRight = getDateXPos(task.endDate, monthCols, monthW);
+        barWidth = Math.max(barRight - barLeft, 2); // Minimum 2px width
+      } else {
+        var startCol = task.startM - 1;
+        var endCol = task.endM;
+        barLeft = startCol * monthW;
+        barWidth = (endCol - startCol) * monthW;
+      }
 
       if (task.type === 'Milestone') {
         var bar = document.createElement('div');
         bar.className = 'gantt-bar bar-milestone ' + barClass + sharedClass;
-        bar.style.left = (barLeft + monthW / 2 - 11) + 'px';
+        bar.style.left = (barLeft - 11) + 'px';
         bar.style.cssText += animDelay;
         bar.innerHTML = '<div class="bar-fill"></div>';
         bar.addEventListener('mouseenter', function(e) { showTooltip(e, task); });
@@ -394,9 +430,9 @@
         var bar2 = document.createElement('div');
         bar2.className = 'gantt-bar ' + barClass + sharedClass;
         bar2.style.left = barLeft + 'px';
-        bar2.style.width = Math.max(barWidth, monthW) + 'px';
+        bar2.style.width = Math.max(barWidth, monthW/3) + 'px'; // Minimum visual width
         bar2.style.cssText += animDelay;
-        var labelHtml = barWidth > monthW * 2 ? '<span class="bar-label">' + task.task + '</span>' : '';
+        var labelHtml = barWidth > monthW * 1.5 ? '<span class="bar-label">' + task.task + '</span>' : '';
         bar2.innerHTML = '<div class="bar-fill" style="width: 100%;"></div>' + labelHtml;
         bar2.addEventListener('mouseenter', function(e) { showTooltip(e, task); });
         bar2.addEventListener('mouseleave', hideTooltip);
@@ -411,21 +447,14 @@
   function renderTodayLine(monthCols) {
     dom.timelineBody.querySelectorAll('.today-line').forEach(function(el) { el.remove(); });
     var now = new Date();
-    var monthW = 60;
-    for (var i = 0; i < monthCols.length; i++) {
-      var colDate = monthCols[i].date;
-      var nextDate = i + 1 < monthCols.length ? monthCols[i + 1].date : addMonths(colDate, 1);
-      if (now >= colDate && now < nextDate) {
-        var totalDays = daysBetween(colDate, nextDate);
-        var elapsed = daysBetween(colDate, now);
-        var frac = totalDays > 0 ? elapsed / totalDays : 0;
-        var xPos = (i + frac) * monthW;
-        var line = document.createElement('div');
-        line.className = 'today-line';
-        line.style.left = xPos + 'px';
-        dom.timelineBody.appendChild(line);
-        break;
-      }
+    var monthW = getMonthWidth();
+    var xPos = getDateXPos(now, monthCols, monthW);
+    
+    if (xPos >= 0 && xPos <= monthCols.length * monthW) {
+      var line = document.createElement('div');
+      line.className = 'today-line';
+      line.style.left = xPos + 'px';
+      dom.timelineBody.appendChild(line);
     }
   }
 
@@ -574,14 +603,24 @@
         if (tlRow) tlRow.style.background = '';
       }
     });
+
+    // Re-render on resize (handles mobile orientation changes / responsive --month-w)
+    var resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        if (allTasks.length > 0) render();
+      }, 200);
+    });
   }
 
   function scrollToToday() {
     var todayLine = dom.timelineBody.querySelector('.today-line');
     if (todayLine) {
-      var panel = $('#timeline-panel');
-      var lineLeft = parseInt(todayLine.style.left);
-      panel.scrollLeft = Math.max(0, lineLeft - panel.clientWidth / 3);
+      var wrapper = $('#gantt-wrapper');
+      var taskPanelW = $('#task-panel').offsetWidth;
+      var lineLeft = parseFloat(todayLine.style.left) + taskPanelW;
+      wrapper.scrollLeft = Math.max(0, lineLeft - wrapper.clientWidth / 2);
     }
   }
 
