@@ -1092,10 +1092,41 @@ body {
 @media (max-width: 900px) {
   :root {
     --task-panel-w: 320px;
+    --task-panel-inner-w: 550px;
     --month-w: 44px;
   }
 
-  .tp-owner, .tp-type { display: none; }
+  #task-panel {
+    overflow-x: auto;
+  }
+
+  .task-panel-header, .task-row, .phase-header {
+    width: var(--task-panel-inner-w);
+    min-width: var(--task-panel-inner-w);
+  }
+
+  /* Sticky ID and Task within the scrolling task panel */
+  .tp-id {
+    position: sticky;
+    left: 0;
+    background: inherit;
+    z-index: 2;
+  }
+  .tp-task {
+    position: sticky;
+    left: 42px;
+    background: inherit;
+    z-index: 2;
+    border-right: 1px solid var(--clr-border-bright);
+  }
+  
+  .task-row {
+    background: var(--clr-bg);
+  }
+  .task-panel-header .tp-id, 
+  .task-panel-header .tp-task {
+    background: var(--clr-surface-2);
+  }
 
   .legend { display: none; }
 
@@ -1106,12 +1137,11 @@ body {
 
 @media (max-width: 600px) {
   :root {
-    --task-panel-w: 220px;
+    --task-panel-w: 240px;
+    --task-panel-inner-w: 500px;
     --month-w: 36px;
     --row-h: 34px;
   }
-
-  .tp-status { display: none; }
 }
 
 /* ---------- Animations ---------- */
