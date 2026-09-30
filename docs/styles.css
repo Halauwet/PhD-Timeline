@@ -526,7 +526,12 @@ body {
 .legend-dot.urgent-progress { background: var(--clr-progress-urgent); }
 .legend-dot.urgent-delayed { background: var(--clr-delayed-urgent); }
 .legend-dot.urgent-not-started { background: var(--clr-not-started-urgent); }
+.legend-dot.overdue-not-started { background: var(--clr-text-muted); }
 .legend-dot.default { background: var(--clr-default-bar); }
+.legend-dot.shared-owner {
+  background: var(--clr-default-bar);
+  border: 2.5px solid rgba(255, 255, 255, 0.85);
+}
 
 /* ---------- Gantt Container ---------- */
 #gantt-wrapper {
@@ -905,12 +910,14 @@ body {
   background: linear-gradient(135deg, var(--clr-text-muted), #5a6478);
 }
 
-/* Shared owner outline */
+/* Shared owner outline — thick solid border for collaborative tasks */
 .gantt-bar.bar-shared-owner {
-  border: 3px solid rgba(255, 255, 255, 0.85) !important;
+  border: 3.5px solid rgba(255, 255, 255, 0.85) !important;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.15);
 }
 .gantt-bar.bar-milestone.bar-shared-owner {
-  border: 3px solid #d8b4fe !important;
+  border: 3.5px solid #d8b4fe !important;
+  box-shadow: 0 0 6px rgba(216, 180, 254, 0.25);
 }
 
 /* Milestone diamond */
@@ -923,6 +930,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  border: 2px solid #d8b4fe !important;
 }
 
 .gantt-bar.bar-milestone:hover {
