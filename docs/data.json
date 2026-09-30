@@ -1,30 +1,30 @@
 {
-  "enrolmentDate": "2026-09-29T00:00:00",
-  "generatedAt": "2026-09-29T22:41:59.703682",
+  "enrolmentDate": "2026-09-30T00:00:00",
+  "generatedAt": "2026-09-30T03:55:25.581338",
   "keyDates": [
     {
       "label": "Enrolment Start",
-      "date": "2026-09-29T00:00:00"
+      "date": "2026-09-30T00:00:00"
     },
     {
       "label": "CoC Target (M9)",
-      "date": "2027-06-29T00:00:00"
+      "date": "2027-06-30T00:00:00"
     },
     {
       "label": "Final Seminar (M30)",
-      "date": "2029-03-29T00:00:00"
+      "date": "2029-03-30T00:00:00"
     },
     {
       "label": "Thesis Submission (M36)",
-      "date": "2029-09-29T00:00:00"
+      "date": "2029-09-30T00:00:00"
     },
     {
       "label": "Scholarship End (M42)",
-      "date": "2030-03-28T00:00:00"
+      "date": "2030-03-29T00:00:00"
     },
     {
       "label": "MEP (M48)",
-      "date": "2030-09-28T00:00:00"
+      "date": "2030-09-29T00:00:00"
     }
   ],
   "tasks": [
@@ -35,10 +35,10 @@
       "type": "Task",
       "startM": 1,
       "endM": 2,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2026-11-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2026-11-29T00:00:00",
       "owner": "Me",
-      "status": "Not started",
+      "status": "In progress",
       "notes": "ANU requirement in first 3 months"
     },
     {
@@ -48,8 +48,8 @@
       "type": "Task",
       "startM": 1,
       "endM": 2,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2026-11-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2026-11-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": ""
@@ -61,8 +61,8 @@
       "type": "Task",
       "startM": 1,
       "endM": 2,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2026-11-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2026-11-29T00:00:00",
       "owner": "Me",
       "status": "Done",
       "notes": ""
@@ -74,8 +74,8 @@
       "type": "Task",
       "startM": 1,
       "endM": 2,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2026-11-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2026-11-29T00:00:00",
       "owner": "Me",
       "status": "In progress",
       "notes": ""
@@ -87,8 +87,8 @@
       "type": "Task",
       "startM": 1,
       "endM": 3,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2026-12-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2026-12-29T00:00:00",
       "owner": "Me",
       "status": "In progress",
       "notes": ""
@@ -100,10 +100,10 @@
       "type": "Task",
       "startM": 1,
       "endM": 2,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2026-11-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2026-11-29T00:00:00",
       "owner": "Me",
-      "status": "Not started",
+      "status": "Done",
       "notes": ""
     },
     {
@@ -113,8 +113,8 @@
       "type": "Task",
       "startM": 1,
       "endM": 2,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2026-11-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2026-11-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
       "notes": ""
@@ -126,8 +126,8 @@
       "type": "Task",
       "startM": 1,
       "endM": 1,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2026-10-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2026-10-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Delayed",
       "notes": "Common source of misunderstanding - settle early and in writing"
@@ -139,8 +139,8 @@
       "type": "Task",
       "startM": 1,
       "endM": 2,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2026-11-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2026-11-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
       "notes": "Robyne Anderson orders through IT"
@@ -152,8 +152,8 @@
       "type": "Task",
       "startM": 1,
       "endM": 1,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2026-10-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2026-10-29T00:00:00",
       "owner": "Me",
       "status": "Done",
       "notes": "Students check ANUHub; supervisors check ANUHub & eForms"
@@ -165,8 +165,8 @@
       "type": "Milestone",
       "startM": 3,
       "endM": 3,
-      "startDate": "2026-11-29T00:00:00",
-      "endDate": "2026-12-28T00:00:00",
+      "startDate": "2026-11-30T00:00:00",
+      "endDate": "2026-12-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
       "notes": "Required for 1st Annual Plan. Revisit the Agreement every year, do not 'set & forget'"
@@ -178,8 +178,8 @@
       "type": "Task",
       "startM": 1,
       "endM": 6,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2027-03-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2027-03-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": "Feeds the CoC thesis proposal"
@@ -191,8 +191,8 @@
       "type": "Task",
       "startM": 2,
       "endM": 4,
-      "startDate": "2026-10-29T00:00:00",
-      "endDate": "2027-01-28T00:00:00",
+      "startDate": "2026-10-30T00:00:00",
+      "endDate": "2027-01-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
       "notes": "Basis for professional development discussion"
@@ -204,8 +204,8 @@
       "type": "Task",
       "startM": 3,
       "endM": 8,
-      "startDate": "2026-11-29T00:00:00",
-      "endDate": "2027-05-28T00:00:00",
+      "startDate": "2026-11-30T00:00:00",
+      "endDate": "2027-05-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": ""
@@ -217,8 +217,8 @@
       "type": "Task",
       "startM": 5,
       "endM": 8,
-      "startDate": "2027-01-29T00:00:00",
-      "endDate": "2027-05-28T00:00:00",
+      "startDate": "2027-01-30T00:00:00",
+      "endDate": "2027-05-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": "CoC written component must include initial results"
@@ -230,8 +230,8 @@
       "type": "Milestone",
       "startM": 4,
       "endM": 4,
-      "startDate": "2026-12-29T00:00:00",
-      "endDate": "2027-01-28T00:00:00",
+      "startDate": "2026-12-30T00:00:00",
+      "endDate": "2027-01-29T00:00:00",
       "owner": "AD(HDR)",
       "status": "Not started",
       "notes": "Follows First Year Plan (+/- 3 months)"
@@ -244,7 +244,7 @@
       "startM": 6,
       "endM": 8,
       "startDate": "2027-02-28T00:00:00",
-      "endDate": "2027-05-28T00:00:00",
+      "endDate": "2027-05-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": "Prepared with supervisory panel"
@@ -256,8 +256,8 @@
       "type": "Milestone",
       "startM": 8,
       "endM": 8,
-      "startDate": "2027-04-29T00:00:00",
-      "endDate": "2027-05-28T00:00:00",
+      "startDate": "2027-04-30T00:00:00",
+      "endDate": "2027-05-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
       "notes": "Hard rule: at least 10 working days before oral presentation"
@@ -269,8 +269,8 @@
       "type": "Milestone",
       "startM": 8,
       "endM": 8,
-      "startDate": "2027-04-29T00:00:00",
-      "endDate": "2027-05-28T00:00:00",
+      "startDate": "2027-04-30T00:00:00",
+      "endDate": "2027-05-29T00:00:00",
       "owner": "CRP Chair",
       "status": "Not started",
       "notes": ""
@@ -282,8 +282,8 @@
       "type": "Task",
       "startM": 8,
       "endM": 9,
-      "startDate": "2027-04-29T00:00:00",
-      "endDate": "2027-06-28T00:00:00",
+      "startDate": "2027-04-30T00:00:00",
+      "endDate": "2027-06-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": "Open to all RSES; all CRP members must attend"
@@ -295,8 +295,8 @@
       "type": "Milestone",
       "startM": 9,
       "endM": 9,
-      "startDate": "2027-05-29T00:00:00",
-      "endDate": "2027-06-28T00:00:00",
+      "startDate": "2027-05-30T00:00:00",
+      "endDate": "2027-06-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": "PhD window is 9(-12) months. Deck asks students to aim for the earlier time so amendments still fit"
@@ -308,8 +308,8 @@
       "type": "Task",
       "startM": 9,
       "endM": 12,
-      "startDate": "2027-05-29T00:00:00",
-      "endDate": "2027-09-28T00:00:00",
+      "startDate": "2027-05-30T00:00:00",
+      "endDate": "2027-09-29T00:00:00",
       "owner": "CRP / Me",
       "status": "Not started",
       "notes": "Outcomes: continue, convert, withdraw, discontinue; amendments -> further CRP review"
@@ -321,8 +321,8 @@
       "type": "Task",
       "startM": 1,
       "endM": 9,
-      "startDate": "2026-09-29T00:00:00",
-      "endDate": "2027-06-28T00:00:00",
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2027-06-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": "Attendance expected as part of CoC; keep going afterwards"
@@ -334,8 +334,8 @@
       "type": "Milestone",
       "startM": 12,
       "endM": 12,
-      "startDate": "2027-08-29T00:00:00",
-      "endDate": "2027-09-28T00:00:00",
+      "startDate": "2027-08-30T00:00:00",
+      "endDate": "2027-09-29T00:00:00",
       "owner": "Me + Chair",
       "status": "Not started",
       "notes": "Discuss with supervisor/Chair & advisory committee before submitting. If CoC slips near this date, submit together and refer to CoC"
@@ -347,8 +347,8 @@
       "type": "Task",
       "startM": 9,
       "endM": 18,
-      "startDate": "2027-05-29T00:00:00",
-      "endDate": "2028-03-28T00:00:00",
+      "startDate": "2027-05-30T00:00:00",
+      "endDate": "2028-03-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": ""
@@ -360,8 +360,8 @@
       "type": "Task",
       "startM": 10,
       "endM": 16,
-      "startDate": "2027-06-29T00:00:00",
-      "endDate": "2028-01-28T00:00:00",
+      "startDate": "2027-06-30T00:00:00",
+      "endDate": "2028-01-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
       "notes": "Reuse in thesis chapters"
@@ -373,8 +373,8 @@
       "type": "Task",
       "startM": 16,
       "endM": 24,
-      "startDate": "2027-12-29T00:00:00",
-      "endDate": "2028-09-28T00:00:00",
+      "startDate": "2027-12-30T00:00:00",
+      "endDate": "2028-09-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": ""
@@ -386,8 +386,8 @@
       "type": "Task",
       "startM": 15,
       "endM": 20,
-      "startDate": "2027-11-29T00:00:00",
-      "endDate": "2028-05-28T00:00:00",
+      "startDate": "2027-11-30T00:00:00",
+      "endDate": "2028-05-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": "Check ANU/RSES travel grants each year"
@@ -400,7 +400,7 @@
       "startM": 18,
       "endM": 26,
       "startDate": "2028-02-29T00:00:00",
-      "endDate": "2028-11-28T00:00:00",
+      "endDate": "2028-11-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
       "notes": ""
@@ -412,8 +412,8 @@
       "type": "Milestone",
       "startM": 24,
       "endM": 24,
-      "startDate": "2028-08-29T00:00:00",
-      "endDate": "2028-09-28T00:00:00",
+      "startDate": "2028-08-30T00:00:00",
+      "endDate": "2028-09-29T00:00:00",
       "owner": "Me + Chair",
       "status": "Not started",
       "notes": "Use it to lock the submission date and examiner plan"
@@ -426,7 +426,7 @@
       "startM": 18,
       "endM": 19,
       "startDate": "2028-02-29T00:00:00",
-      "endDate": "2028-04-28T00:00:00",
+      "endDate": "2028-04-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
       "notes": ""
@@ -438,8 +438,8 @@
       "type": "Task",
       "startM": 19,
       "endM": 24,
-      "startDate": "2028-03-29T00:00:00",
-      "endDate": "2028-09-28T00:00:00",
+      "startDate": "2028-03-30T00:00:00",
+      "endDate": "2028-09-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": ""
@@ -451,8 +451,8 @@
       "type": "Task",
       "startM": 24,
       "endM": 30,
-      "startDate": "2028-08-29T00:00:00",
-      "endDate": "2029-03-28T00:00:00",
+      "startDate": "2028-08-30T00:00:00",
+      "endDate": "2029-03-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": ""
@@ -464,8 +464,8 @@
       "type": "Task",
       "startM": 28,
       "endM": 31,
-      "startDate": "2028-12-29T00:00:00",
-      "endDate": "2029-04-28T00:00:00",
+      "startDate": "2028-12-30T00:00:00",
+      "endDate": "2029-04-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": ""
@@ -478,7 +478,7 @@
       "startM": 30,
       "endM": 30,
       "startDate": "2029-02-28T00:00:00",
-      "endDate": "2029-03-28T00:00:00",
+      "endDate": "2029-03-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": "PhD Final Seminars: Tuesdays 16:00, J1 Seminar Room"
@@ -490,8 +490,8 @@
       "type": "Milestone",
       "startM": 31,
       "endM": 31,
-      "startDate": "2029-03-29T00:00:00",
-      "endDate": "2029-04-28T00:00:00",
+      "startDate": "2029-03-30T00:00:00",
+      "endDate": "2029-04-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": "Allow supervisors reasonable turnaround time"
@@ -503,8 +503,8 @@
       "type": "Task",
       "startM": 32,
       "endM": 34,
-      "startDate": "2029-04-29T00:00:00",
-      "endDate": "2029-07-28T00:00:00",
+      "startDate": "2029-04-30T00:00:00",
+      "endDate": "2029-07-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
       "notes": ""
@@ -516,8 +516,8 @@
       "type": "Milestone",
       "startM": 34,
       "endM": 34,
-      "startDate": "2029-06-29T00:00:00",
-      "endDate": "2029-07-28T00:00:00",
+      "startDate": "2029-06-30T00:00:00",
+      "endDate": "2029-07-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": "About 2 months before submission"
@@ -529,8 +529,8 @@
       "type": "Milestone",
       "startM": 34,
       "endM": 34,
-      "startDate": "2029-06-29T00:00:00",
-      "endDate": "2029-07-28T00:00:00",
+      "startDate": "2029-06-30T00:00:00",
+      "endDate": "2029-07-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
       "notes": "About 2 months before submission"
@@ -542,8 +542,8 @@
       "type": "Task",
       "startM": 35,
       "endM": 35,
-      "startDate": "2029-07-29T00:00:00",
-      "endDate": "2029-08-28T00:00:00",
+      "startDate": "2029-07-30T00:00:00",
+      "endDate": "2029-08-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
       "notes": ""
@@ -555,8 +555,8 @@
       "type": "Task",
       "startM": 35,
       "endM": 36,
-      "startDate": "2029-07-29T00:00:00",
-      "endDate": "2029-09-28T00:00:00",
+      "startDate": "2029-07-30T00:00:00",
+      "endDate": "2029-09-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": ""
@@ -568,8 +568,8 @@
       "type": "Milestone",
       "startM": 36,
       "endM": 36,
-      "startDate": "2029-08-29T00:00:00",
-      "endDate": "2029-09-28T00:00:00",
+      "startDate": "2029-08-30T00:00:00",
+      "endDate": "2029-09-29T00:00:00",
       "owner": "Me",
       "status": "Not started",
       "notes": "Scholarship ends at final thesis upload"
@@ -581,8 +581,8 @@
       "type": "Task",
       "startM": 37,
       "endM": 42,
-      "startDate": "2029-09-29T00:00:00",
-      "endDate": "2030-03-28T00:00:00",
+      "startDate": "2029-09-30T00:00:00",
+      "endDate": "2030-03-29T00:00:00",
       "owner": "Examiners",
       "status": "Not started",
       "notes": "Oral exam optional for candidates who began before July 2024"
@@ -595,7 +595,7 @@
       "startM": 42,
       "endM": 42,
       "startDate": "2030-02-28T00:00:00",
-      "endDate": "2030-03-28T00:00:00",
+      "endDate": "2030-03-29T00:00:00",
       "owner": "-",
       "status": "Not started",
       "notes": "MEP 4 years; MPC 5 years; extensions beyond 4 years are more difficult"
