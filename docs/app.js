@@ -612,15 +612,36 @@
         if (allTasks.length > 0) render();
       }, 200);
     });
+
+    // Synchronize vertical scrolling between task-panel and timeline-panel
+    var taskPanel = $('#task-panel');
+    var timelinePanel = $('#timeline-panel');
+    var isSyncingTaskPanel = false;
+    var isSyncingTimelinePanel = false;
+
+    taskPanel.addEventListener('scroll', function() {
+      if (!isSyncingTaskPanel) {
+        isSyncingTimelinePanel = true;
+        timelinePanel.scrollTop = this.scrollTop;
+      }
+      isSyncingTaskPanel = false;
+    });
+
+    timelinePanel.addEventListener('scroll', function() {
+      if (!isSyncingTimelinePanel) {
+        isSyncingTaskPanel = true;
+        taskPanel.scrollTop = this.scrollTop;
+      }
+      isSyncingTimelinePanel = false;
+    });
   }
 
   function scrollToToday() {
     var todayLine = dom.timelineBody.querySelector('.today-line');
     if (todayLine) {
-      var wrapper = $('#gantt-wrapper');
-      var taskPanelW = $('#task-panel').offsetWidth;
-      var lineLeft = parseFloat(todayLine.style.left) + taskPanelW;
-      wrapper.scrollLeft = Math.max(0, lineLeft - wrapper.clientWidth / 2);
+      var timelinePanel = $('#timeline-panel');
+      var lineLeft = parseFloat(todayLine.style.left);
+      timelinePanel.scrollLeft = Math.max(0, lineLeft - timelinePanel.clientWidth / 2);
     }
   }
 

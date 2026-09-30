@@ -550,14 +550,14 @@ body {
 #gantt-wrapper {
   flex: 1;
   min-height: 0; /* critical for flex child overflow */
-  overflow: auto;
+  overflow: hidden;
   position: relative;
 }
 
 #gantt-container {
   display: flex;
-  min-height: 100%;
-  width: max-content;
+  height: 100%;
+  width: 100%;
 }
 
 /* ---------- Task Panel (Left) ---------- */
@@ -566,10 +566,20 @@ body {
   min-width: var(--task-panel-w);
   flex-shrink: 0;
   border-right: 1px solid var(--clr-border-bright);
-  position: sticky;
-  left: 0;
   z-index: 10;
   background: var(--clr-bg);
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+#task-panel::-webkit-scrollbar:vertical {
+  display: none;
+}
+
+#task-panel::-webkit-scrollbar:horizontal {
+  height: 8px;
 }
 
 .task-panel-header {
@@ -770,7 +780,7 @@ body {
 #timeline-panel {
   flex: 1;
   min-width: 0;
-  overflow: visible;
+  overflow: auto;
   position: relative;
 }
 
