@@ -1,6 +1,6 @@
 {
   "enrolmentDate": "2026-09-30T00:00:00",
-  "generatedAt": "2026-09-30T19:47:10.215363",
+  "generatedAt": "2026-09-30T10:38:10.951060",
   "keyDates": [
     {
       "label": "Enrolment Start",
@@ -181,7 +181,7 @@
       "startDate": "2026-09-30T00:00:00",
       "endDate": "2027-03-29T00:00:00",
       "owner": "Me",
-      "status": "Not started",
+      "status": "In progress",
       "notes": "Feeds the CoC thesis proposal"
     },
     {
