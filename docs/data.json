@@ -1,29 +1,29 @@
 {
   "enrolmentDate": "2026-09-30T00:00:00",
-  "generatedAt": "2026-09-30T03:55:25.581338",
+  "generatedAt": "2026-09-30T19:47:10.215363",
   "keyDates": [
     {
       "label": "Enrolment Start",
       "date": "2026-09-30T00:00:00"
     },
     {
-      "label": "CoC Target (M9)",
-      "date": "2027-06-30T00:00:00"
+      "label": "CoC Target",
+      "date": "2027-06-29T00:00:00"
     },
     {
-      "label": "Final Seminar (M30)",
-      "date": "2029-03-30T00:00:00"
+      "label": "Final Seminar",
+      "date": "2029-03-29T00:00:00"
     },
     {
-      "label": "Thesis Submission (M36)",
-      "date": "2029-09-30T00:00:00"
+      "label": "Thesis Submission",
+      "date": "2029-09-29T00:00:00"
     },
     {
-      "label": "Scholarship End (M42)",
-      "date": "2030-03-29T00:00:00"
+      "label": "Scholarship End",
+      "date": "2030-09-29T00:00:00"
     },
     {
-      "label": "MEP (M48)",
+      "label": "MEP",
       "date": "2030-09-29T00:00:00"
     }
   ],

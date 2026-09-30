@@ -48,14 +48,25 @@ def main():
     else:
         enrolment_date = datetime(2026, 9, 29)
 
+    def get_date(cell, default):
+        val = ws[cell].value
+        if isinstance(val, datetime):
+            return val.isoformat()
+        if isinstance(val, str):
+            try:
+                return datetime.fromisoformat(val).isoformat()
+            except ValueError:
+                pass
+        return default
+
     # ---- Key dates ----
     key_dates = [
         {"label": "Enrolment Start", "date": enrolment_date.isoformat()},
-        {"label": "CoC Target (M9)", "date": add_months(enrolment_date, 9).isoformat()},
-        {"label": "Final Seminar (M30)", "date": add_months(enrolment_date, 30).isoformat()},
-        {"label": "Thesis Submission (M36)", "date": add_months(enrolment_date, 36).isoformat()},
-        {"label": "Scholarship End (M42)", "date": (add_months(enrolment_date, 42) - timedelta(days=1)).isoformat()},
-        {"label": "MEP (M48)", "date": (add_months(enrolment_date, 48) - timedelta(days=1)).isoformat()},
+        {"label": "CoC Target", "date": get_date("D5", add_months(enrolment_date, 9).isoformat())},
+        {"label": "Final Seminar", "date": get_date("D6", add_months(enrolment_date, 30).isoformat())},
+        {"label": "Thesis Submission", "date": get_date("D7", add_months(enrolment_date, 36).isoformat())},
+        {"label": "Scholarship End", "date": get_date("D8", (add_months(enrolment_date, 42) - timedelta(days=1)).isoformat())},
+        {"label": "MEP", "date": get_date("D9", (add_months(enrolment_date, 48) - timedelta(days=1)).isoformat())},
     ]
 
     # ---- Tasks (rows 14–57) ----
