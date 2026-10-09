@@ -1,6 +1,6 @@
 {
   "enrolmentDate": "2026-09-30T00:00:00",
-  "generatedAt": "2026-09-30T10:44:29.168879",
+  "generatedAt": "2026-10-09T11:26:17.289627",
   "keyDates": [
     {
       "label": "Enrolment Start",
@@ -129,7 +129,7 @@
       "startDate": "2026-09-30T00:00:00",
       "endDate": "2026-10-29T00:00:00",
       "owner": "Me + Supervisor",
-      "status": "Delayed",
+      "status": "In progress",
       "notes": "Common source of misunderstanding - settle early and in writing"
     },
     {
