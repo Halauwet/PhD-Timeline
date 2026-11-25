@@ -1,6 +1,6 @@
 {
   "enrolmentDate": "2026-09-30T00:00:00",
-  "generatedAt": "2026-10-24T06:26:35.908589",
+  "generatedAt": "2026-11-25T06:56:18.631434",
   "keyDates": [
     {
       "label": "Enrolment Start",
@@ -34,9 +34,9 @@
       "task": "Mandatory Canvas: Rights, Relationships & Respect in Research",
       "type": "Task",
       "startM": 1,
-      "endM": 2,
+      "endM": 3,
       "startDate": "2026-09-30T00:00:00",
-      "endDate": "2026-11-29T00:00:00",
+      "endDate": "2026-12-29T00:00:00",
       "owner": "Me",
       "status": "Done",
       "notes": "ANU requirement in first 3 months"
@@ -47,9 +47,9 @@
       "task": "Mandatory Canvas: Research integrity training",
       "type": "Task",
       "startM": 1,
-      "endM": 2,
+      "endM": 3,
       "startDate": "2026-09-30T00:00:00",
-      "endDate": "2026-11-29T00:00:00",
+      "endDate": "2026-12-29T00:00:00",
       "owner": "Me",
       "status": "In progress",
       "notes": ""
@@ -60,9 +60,9 @@
       "task": "Mandatory Pulse: Code of Conduct",
       "type": "Task",
       "startM": 1,
-      "endM": 2,
+      "endM": 3,
       "startDate": "2026-09-30T00:00:00",
-      "endDate": "2026-11-29T00:00:00",
+      "endDate": "2026-12-29T00:00:00",
       "owner": "Me",
       "status": "In progress",
       "notes": ""
@@ -73,9 +73,9 @@
       "task": "Mandatory Pulse: University Work Health & Safety (WHS) induction",
       "type": "Task",
       "startM": 1,
-      "endM": 2,
+      "endM": 3,
       "startDate": "2026-09-30T00:00:00",
-      "endDate": "2026-11-29T00:00:00",
+      "endDate": "2026-12-29T00:00:00",
       "owner": "Me",
       "status": "Done",
       "notes": ""
@@ -90,7 +90,7 @@
       "startDate": "2026-09-30T00:00:00",
       "endDate": "2026-12-29T00:00:00",
       "owner": "Me",
-      "status": "Not started",
+      "status": "In progress",
       "notes": ""
     },
     {
@@ -99,9 +99,9 @@
       "task": "RSES induction + local WHS (whs.rses@anu.edu.au)",
       "type": "Task",
       "startM": 1,
-      "endM": 2,
+      "endM": 3,
       "startDate": "2026-09-30T00:00:00",
-      "endDate": "2026-11-29T00:00:00",
+      "endDate": "2026-12-29T00:00:00",
       "owner": "Me",
       "status": "Done",
       "notes": ""
@@ -112,9 +112,9 @@
       "task": "Set up supervisory panel (Chair + advisors)",
       "type": "Task",
       "startM": 1,
-      "endM": 2,
+      "endM": 3,
       "startDate": "2026-09-30T00:00:00",
-      "endDate": "2026-11-29T00:00:00",
+      "endDate": "2026-12-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "In progress",
       "notes": ""
@@ -125,9 +125,9 @@
       "task": "Agree expectations with supervisor: feedback turnaround, hours (40 h/wk), WFH vs on-campus, etc",
       "type": "Task",
       "startM": 1,
-      "endM": 1,
+      "endM": 3,
       "startDate": "2026-09-30T00:00:00",
-      "endDate": "2026-10-29T00:00:00",
+      "endDate": "2026-12-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "In progress",
       "notes": "Common source of misunderstanding - settle early and in writing"
@@ -142,7 +142,7 @@
       "startDate": "2026-09-30T00:00:00",
       "endDate": "2026-11-29T00:00:00",
       "owner": "Me + Supervisor",
-      "status": "In progress",
+      "status": "Done",
       "notes": "Robyne Anderson orders through IT"
     },
     {
@@ -163,9 +163,9 @@
       "phase": "0 Onboarding (M1-3)",
       "task": "Submit Candidate-Supervisor Agreement + Year 1 Plan",
       "type": "Milestone",
-      "startM": 3,
+      "startM": 2,
       "endM": 3,
-      "startDate": "2026-11-30T00:00:00",
+      "startDate": "2026-10-30T00:00:00",
       "endDate": "2026-12-29T00:00:00",
       "owner": "Me + Supervisor",
       "status": "Not started",
