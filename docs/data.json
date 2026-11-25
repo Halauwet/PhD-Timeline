@@ -1,6 +1,6 @@
 {
   "enrolmentDate": "2026-09-30T00:00:00",
-  "generatedAt": "2026-10-09T11:26:17.289627",
+  "generatedAt": "2026-10-24T06:26:35.908589",
   "keyDates": [
     {
       "label": "Enrolment Start",
@@ -31,7 +31,20 @@
     {
       "id": "T01",
       "phase": "0 Onboarding (M1-3)",
-      "task": "ANU mandatory: Rights, Relationships & Respect in Research",
+      "task": "Mandatory Canvas: Rights, Relationships & Respect in Research",
+      "type": "Task",
+      "startM": 1,
+      "endM": 2,
+      "startDate": "2026-09-30T00:00:00",
+      "endDate": "2026-11-29T00:00:00",
+      "owner": "Me",
+      "status": "Done",
+      "notes": "ANU requirement in first 3 months"
+    },
+    {
+      "id": "T02",
+      "phase": "0 Onboarding (M1-3)",
+      "task": "Mandatory Canvas: Research integrity training",
       "type": "Task",
       "startM": 1,
       "endM": 2,
@@ -39,25 +52,25 @@
       "endDate": "2026-11-29T00:00:00",
       "owner": "Me",
       "status": "In progress",
-      "notes": "ANU requirement in first 3 months"
+      "notes": ""
     },
     {
-      "id": "T02",
+      "id": "T03",
       "phase": "0 Onboarding (M1-3)",
-      "task": "ANU mandatory: CORE Cultural Learning",
+      "task": "Mandatory Pulse: Code of Conduct",
       "type": "Task",
       "startM": 1,
       "endM": 2,
       "startDate": "2026-09-30T00:00:00",
       "endDate": "2026-11-29T00:00:00",
       "owner": "Me",
-      "status": "Not started",
+      "status": "In progress",
       "notes": ""
     },
     {
-      "id": "T03",
+      "id": "T04",
       "phase": "0 Onboarding (M1-3)",
-      "task": "ANU mandatory: University Work Health & Safety (WHS) induction",
+      "task": "Mandatory Pulse: University Work Health & Safety (WHS) induction",
       "type": "Task",
       "startM": 1,
       "endM": 2,
@@ -68,29 +81,16 @@
       "notes": ""
     },
     {
-      "id": "T04",
-      "phase": "0 Onboarding (M1-3)",
-      "task": "ANU mandatory: Code of Conduct",
-      "type": "Task",
-      "startM": 1,
-      "endM": 2,
-      "startDate": "2026-09-30T00:00:00",
-      "endDate": "2026-11-29T00:00:00",
-      "owner": "Me",
-      "status": "In progress",
-      "notes": ""
-    },
-    {
       "id": "T05",
       "phase": "0 Onboarding (M1-3)",
-      "task": "Research integrity training",
+      "task": "Mandatory Pulse: Other Training",
       "type": "Task",
       "startM": 1,
       "endM": 3,
       "startDate": "2026-09-30T00:00:00",
       "endDate": "2026-12-29T00:00:00",
       "owner": "Me",
-      "status": "In progress",
+      "status": "Not started",
       "notes": ""
     },
     {
@@ -116,7 +116,7 @@
       "startDate": "2026-09-30T00:00:00",
       "endDate": "2026-11-29T00:00:00",
       "owner": "Me + Supervisor",
-      "status": "Not started",
+      "status": "In progress",
       "notes": ""
     },
     {
@@ -142,7 +142,7 @@
       "startDate": "2026-09-30T00:00:00",
       "endDate": "2026-11-29T00:00:00",
       "owner": "Me + Supervisor",
-      "status": "Not started",
+      "status": "In progress",
       "notes": "Robyne Anderson orders through IT"
     },
     {
